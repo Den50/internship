@@ -1,0 +1,116 @@
+header{
+  width: 100%;
+  box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
+  padding: 15px 0;
+  margin-bottom: 30px;
+}
+.wrap_header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.branch{
+  color: rgb(83, 83, 83);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.Panel{
+  background-color: rgb(224, 210, 2);
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
+}
+.Panel input{
+  width: 50%;
+  border: none;
+  border-radius: 3px 0 0 3px;
+  /* outline: 2; */
+  font-size: 18px;
+  height: 40px;
+  position: relative;
+  padding: 0 8px;
+}
+.Panel button.addButton{
+  /* position: absolute; */
+  /* right: -20px; */
+  background-color: #ff23ab;
+  color: white;
+  border-radius: 0 3px 3px 0;
+  border: 2px solid #e21a95;
+  width: 60px;
+}
+
+.chooseFilter{
+  margin-left: 30px;
+}
+.chooseFilter button {
+  background-color: #9523ff;
+  color: white;
+  border: 2px solid #871deb;
+  padding: 6px 12px;
+}
+.chooseFilter .activedButton{
+  border-radius: 3px 0 0 3px;
+  /* border-right: none; */
+}
+.chooseFilter .checkedButton{
+  border-radius: 0 3px 3px 0;
+  /* border-left: none; */
+}
+.chooseFilter button.active{
+  background-color: #670abe;
+  border: 2px solid #5905a8;
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
+  background-color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+.Todos{
+  box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
+  border-radius: 0 0 5px 5px;
+  padding: 20px 0;
+}
+.Todos ul{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.Todo{
+  width: 90%;
+  list-style: none;
+  /* background-color: rgb(233, 233, 233); */
+  margin-bottom: 10px;
+  padding: 13px 13px;
+  font-size: 18px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
+  position: relative;
+}
+.Todo span{
+  margin-left: 5px;
+}
+.Todo .id{
+  /* background-color: rgb(230, 227, 227); */
+  color: rgb(175, 175, 175);
+  position: absolute;
+  left: -30px;
+  margin-top: -3px;
+  padding: 3px 5px;
+}
+.Barchart{
+  width: 40%;
+  vertical-align: middle;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 0 rgba(83, 83, 83, 0.246);
+  padding: 6px 10px;
+}
