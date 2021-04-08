@@ -13,12 +13,12 @@ class Header extends Component {
                <div className="wrap_header">
                   <div className="branch">Todos</div>
                   <Barchart />
-                  <input type="file" />
+                  <span>Import JSON file: <input type="file"/></span>
                </div>
             </div>
          </header>
       )
    }
 }
- 
+
 export default Header;

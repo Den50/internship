@@ -10,7 +10,8 @@ header{
   justify-content: space-between;
 }
 .branch{
-  color: rgb(83, 83, 83);
+  color: rgb(54, 54, 54);
+  line-height: 27px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .Panel{
@@ -30,6 +31,7 @@ header{
   height: 40px;
   position: relative;
   padding: 0 8px;
+  font-weight: 300;
 }
 .Panel button.addButton{
   /* position: absolute; */
@@ -50,7 +52,7 @@ header{
   border: 2px solid #871deb;
   padding: 6px 12px;
 }
-.chooseFilter .activedButton{
+.chooseFilter .allButton{
   border-radius: 3px 0 0 3px;
   /* border-right: none; */
 }
@@ -62,7 +64,20 @@ header{
   background-color: #670abe;
   border: 2px solid #5905a8;
 }
-
+.close {
+  float: right;
+  font-size: 18px !important;
+  font-weight: normal !important;
+  line-height: 27px;
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 50%;
+  width: 29px;
+  height: 29px;
+  text-align: center;
+  padding-bottom: 2px;
+  line-height: 26px !important;
+  cursor: pointer;
+}
 footer{
   position: fixed;
   bottom: 0;
@@ -89,15 +104,26 @@ footer{
   list-style: none;
   /* background-color: rgb(233, 233, 233); */
   margin-bottom: 10px;
-  padding: 13px 13px;
+  padding: 9px 9px;
   font-size: 18px;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
   position: relative;
+  border: 2px solid white;
+  transition: all .2s ease-in-out;
 }
+.Todo:hover{
+  border: 2px solid rgb(146, 2, 190);
+}
+.Todo.noactive {
+  opacity: 0.5;
+}
+
 .Todo span{
   margin-left: 5px;
+  font-weight: 300;
+  cursor: pointer;
 }
 .Todo .id{
   /* background-color: rgb(230, 227, 227); */
