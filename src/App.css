@@ -64,6 +64,11 @@ header{
   background-color: #670abe;
   border: 2px solid #5905a8;
 }
+.time{
+  float: right;
+  color: rgb(163, 163, 163);
+  margin-right: 15px;
+}
 .close {
   float: right;
   font-size: 18px !important;
@@ -90,7 +95,8 @@ footer{
 .Todos{
   box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
   border-radius: 0 0 5px 5px;
-  padding: 20px 0;
+  padding: 20px 0 50px;
+  margin-bottom: 120px;
 }
 .Todos ul{
   width: 100%;
@@ -138,5 +144,47 @@ footer{
   vertical-align: middle;
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(83, 83, 83, 0.246);
-  padding: 6px 10px;
+  padding: 5px 40px 4px 10px;
+  position: relative;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  border: 2px solid rgb(255, 255, 255);
+}
+.Barchart:hover{
+  /* border: 2px solid rgba(127, 1, 200, 0.603); */
+}
+/* .arrowBottom{
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: #000;
+
+} */
+.Barchart::after{
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 11px;
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  
+  border-top: 5px solid rgb(47, 47, 47);
+  cursor: pointer;
+}
+.wdayDropdown{
+  position: absolute;
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  z-index: 10;
+  left: 0px;
+  top: 40px;
+  padding: 15px 10px;
+  box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
+  border-radius: 3px;
+}
+.exportJSON{
+  text-align: center;
 }

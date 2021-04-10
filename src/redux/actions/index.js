@@ -1,7 +1,11 @@
-import { TODO_ADD, TODO_DELETE, TODO_TOGGLE, FILTER_CHANGE } from "../types"
+import { TODO_ADD, TODO_ADD_INIT, TODO_DELETE, TODO_TOGGLE, FILTER_CHANGE, TODO_IMPORT, TODO_LOAD } from "../types"
 
 export const addTodo = value => ({
    type: TODO_ADD,
+   payload: value
+})
+export const addTodoInit = value => ({
+   type: TODO_ADD_INIT,
    payload: value
 })
 
@@ -18,4 +22,12 @@ export const toggleTodo = id => ({
 export const changeFilter = filter => ({
    type: FILTER_CHANGE,
    payload: filter
+})
+export const importTodos = data => ({
+   type: TODO_IMPORT,
+   payload: data
+})
+export const loadTodos = data => ({
+   type: TODO_LOAD,
+   payload: data
 })

@@ -1,7 +1,9 @@
 import {Component} from 'react'
 import Todo from "./Todo"
 import { connect } from "react-redux"
-import { deleteTodo, toggleTodo } from "../redux/actions"
+import { deleteTodo, loadTodos, toggleTodo } from "../redux/actions"
+
+// const fs = require("fs")
 
 class Todos extends Component {
    constructor(props) {
@@ -14,7 +16,8 @@ class Todos extends Component {
             return (<Todo 
                id={todo.id} 
                active={todo.active} 
-               cnt={todo.cnt} 
+               cnt={todo.cnt}
+               time={todo.time}
                eventDelete={id => this.props.deleteTodo(id)} 
                eventToggle={id => this.props.toggleTodo(id)}
             />)
@@ -25,6 +28,7 @@ class Todos extends Component {
                   id={todo.id} 
                   active={todo.active} 
                   cnt={todo.cnt} 
+                  time={todo.time}
                   eventDelete={id => this.props.deleteTodo(id)} 
                   eventToggle={id => this.props.toggleTodo(id)}
                />)
@@ -36,12 +40,31 @@ class Todos extends Component {
                   id={todo.id} 
                   active={todo.active} 
                   cnt={todo.cnt} 
+                  time={todo.time}
                   eventDelete={id => this.props.deleteTodo(id)} 
                   eventToggle={id => this.props.toggleTodo(id)}
                />)
             else
                return
       }
+   }
+   handleSaveToPC(jsonData){
+      const fileData = JSON.stringify(jsonData);
+      const blob = new Blob([fileData], {type: "text/plain"});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.download = 'filename.json';
+      link.href = url;
+      link.click();
+    }
+   saveJSON(e){
+      let data = {
+         data: this.props.todos,
+         meta:{
+            filter: this.props.filter
+         }
+      }
+      this.handleSaveToPC(data)
    }
    render() {
       return ( 
@@ -53,6 +76,7 @@ class Todos extends Component {
                   )
                }
             </ul>
+            <p className="exportJSON"><a href="#" onClick={e => this.saveJSON(e)}>Export JSON</a></p>
          </div>
       )
    }
@@ -60,7 +84,8 @@ class Todos extends Component {
 
 const mapDispatchToProps = dispatch => ({
    deleteTodo: id => dispatch(deleteTodo(id)),
-   toggleTodo: id => dispatch(toggleTodo(id))
+   toggleTodo: id => dispatch(toggleTodo(id)),
+	loadTodos: () => dispatch(loadTodos())
 })
 const mapStateToProps = state => ({
    todos: state.todos,

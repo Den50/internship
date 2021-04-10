@@ -8,8 +8,6 @@ class Barchart extends Component {
       super(props);
       this.state = { 
 			dropdown: false,
-			wdays: [],
-			globalProcents: 0
       }
       // props -> [{wday: "Mon", value: 50}, {wday: "Wen", value: 44}...]
       
@@ -38,21 +36,27 @@ class Barchart extends Component {
 			}
 		})
 		res.map((wday, index) => {
-			res[index].procents = (wday.countChecked / (wday.countChecked + wday.countActive)) * 100 || 0
+			res[index].procents = Math.round((wday.countChecked / (wday.countChecked + wday.countActive)) * 100) || 0
 		})
 
 		return {
 			wdays: res,
-			globalProcents: Math.round((countCheckedGLobal / (countCheckedGLobal + countActiveGLobal)) * 100)
+			globalProcents: Math.round((countCheckedGLobal / (countCheckedGLobal + countActiveGLobal)) * 100) || 0
 		}
 	}
    render() {
-		console.log(this.calc().wdays)
       return ( 
-         <div className="Barchart">
+         <div className="Barchart" onClick={e => this.setState({dropdown: !this.state.dropdown})}>
             <ProgressBar now={this.calc().globalProcents} label={`${this.calc().globalProcents}%`}/>
-            <div className="wdayDropdown">
-
+            <div className="wdayDropdown" style={this.state.dropdown? {display: "block"}: {display: "none"}}>
+					{
+						this.calc().wdays.map(wday => 
+							<div className="wdayDropdownItem">
+								<span>{wday.wday}: </span> 
+								<ProgressBar now={wday.procents} label={`${wday.procents}%`}/>
+							</div>
+						)
+					}
             </div>
          </div>
       )
