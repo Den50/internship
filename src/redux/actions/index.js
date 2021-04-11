@@ -1,4 +1,4 @@
-import { TODO_ADD, TODO_ADD_INIT, TODO_DELETE, TODO_TOGGLE, FILTER_CHANGE, TODO_IMPORT, TODO_LOAD } from "../types"
+import { TODO_ADD, TODO_ADD_INIT, TODO_DELETE, TODO_TOGGLE, FILTER_CHANGE, TODO_IMPORT, TODO_LOAD, APP_CHANGE_THEME } from "../types"
 
 export const addTodo = value => ({
    type: TODO_ADD,
@@ -30,4 +30,8 @@ export const importTodos = data => ({
 export const loadTodos = data => ({
    type: TODO_LOAD,
    payload: data
+})
+export const changeTheme = theme => ({
+   type: APP_CHANGE_THEME,
+   payload: theme
 })

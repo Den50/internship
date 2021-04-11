@@ -20,6 +20,7 @@ class Todos extends Component {
                time={todo.time}
                eventDelete={id => this.props.deleteTodo(id)} 
                eventToggle={id => this.props.toggleTodo(id)}
+               key={todo.id}
             />)
          case "active":
             console.log('active')
@@ -31,6 +32,7 @@ class Todos extends Component {
                   time={todo.time}
                   eventDelete={id => this.props.deleteTodo(id)} 
                   eventToggle={id => this.props.toggleTodo(id)}
+                  key={todo.id}
                />)
             else
                return
@@ -43,6 +45,7 @@ class Todos extends Component {
                   time={todo.time}
                   eventDelete={id => this.props.deleteTodo(id)} 
                   eventToggle={id => this.props.toggleTodo(id)}
+                  key={todo.id}
                />)
             else
                return
@@ -53,7 +56,7 @@ class Todos extends Component {
       const blob = new Blob([fileData], {type: "text/plain"});
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
-      link.download = 'filename.json';
+      link.download = 'TODOs.json';
       link.href = url;
       link.click();
     }
@@ -68,7 +71,7 @@ class Todos extends Component {
    }
    render() {
       return ( 
-         <div className="Todos">
+         <div className={`Todos ${this.props.theme}`}>
             <ul>
                {
                   this.props.todos.map((todo, index) => 
@@ -76,7 +79,7 @@ class Todos extends Component {
                   )
                }
             </ul>
-            <p className="exportJSON"><a href="#" onClick={e => this.saveJSON(e)}>Export JSON</a></p>
+            <p className="exportJSON"><a href="#download" onClick={e => this.saveJSON(e)}>Export JSON</a></p>
          </div>
       )
    }
@@ -89,7 +92,8 @@ const mapDispatchToProps = dispatch => ({
 })
 const mapStateToProps = state => ({
    todos: state.todos,
-   filter: state.filter
+   filter: state.filter,
+   theme: state.app.theme
 })
  
 export default connect(mapStateToProps, mapDispatchToProps)(Todos);

@@ -8,3 +8,5 @@ export const TODO_EXPORT = "TODO/EXPORT"
 export const TODO_LOAD = "TODO/LOAD"
 
 export const FILTER_CHANGE = "FILTER/CHANGE"
+
+export const APP_CHANGE_THEME = "APP/CHANGE_THEME"

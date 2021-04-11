@@ -1,21 +1,9 @@
 import { combineReducers } from 'redux'
-import { TODO_ADD, TODO_ADD_INIT, TODO_DELETE, TODO_TOGGLE, FILTER_CHANGE, TODO_IMPORT, TODO_LOAD } from "../types"
+import { TODO_ADD, TODO_ADD_INIT, TODO_DELETE, TODO_TOGGLE, FILTER_CHANGE, TODO_IMPORT, APP_CHANGE_THEME } from "../types"
 import * as localforage from "localforage"
 
 const saveToDB = todo => {
    localforage.setItem(todo.id, todo)
-}
-const initFromDB = () => {
-   var res = []
-   localforage.keys().then(keys => {
-      keys.map(key => {
-         localforage.getItem(key).then(value => {
-            // callback(value)
-            res.push(value.cnt)
-         })
-      })
-   })
-   return res
 }
 
 const todos = (state = [], action) => {
@@ -83,9 +71,22 @@ const filter = (state="all", action) => {
    }
    return state
 }
+const app = (state = {theme:"light"}, action) => {
+   switch(action.type){
+      case APP_CHANGE_THEME:
+         // const app =  localforage.createInstance({ name: "mydatabasename" , storeName: "app" })
+         localforage.setItem("INTERNSHIP", action.payload)
+         return {
+            ...state,
+            theme: action.payload
+         }
+   }
+   return state
+}
 const rootReducer = combineReducers({
+   app,
 	todos,
-   filter
+   filter,
 })
  
 export default rootReducer

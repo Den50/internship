@@ -1,7 +1,7 @@
 import {Component} from 'react'
 import Barchart from "./Barchart"
 import { connect } from "react-redux"
-import { importTodos } from "../redux/actions"
+import { importTodos, changeFilter, changeTheme } from "../redux/actions"
 
 
 class Header extends Component {
@@ -17,16 +17,29 @@ class Header extends Component {
       reader.readAsText(file, "UTF-8");
       reader.onload = function (evt) {
          self.props.importTodos(JSON.parse(evt.target.result).data)
+         self.props.changeFilter(JSON.parse(evt.target.result).meta.filter)
       }
    }
    render() { 
       return ( 
-         <header>
+         <header className={this.props.theme}>
             <div className="container">
                <div className="wrap_header">
                   <div className="branch">Todos</div>
                   <Barchart />
-                  <span>Import JSON file: <input type="file" onChange={e => this.uploadJSON(e)}/></span>
+
+                  <div className='group_tools'>
+                     <label className="switch">
+                        <span className="name_switch">Theme: </span>
+                        <input type="checkbox" defaultChecked={this.props.theme == "dark"} onChange={e => this.props.changeTheme((e.target.checked)? "dark": "light")}/>
+                        <span className="slider round"></span>
+                     </label>
+
+                     <div className="browse-button">
+                        <input type="button" value="Import TODOs"/>
+                        <input type="file" onChange={e => this.uploadJSON(e)}/>
+                     </div>
+                  </div>
                </div>
             </div>
          </header>
@@ -35,7 +48,12 @@ class Header extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-   importTodos: data => dispatch(importTodos(data))
+   importTodos: data => dispatch(importTodos(data)),
+   changeFilter: newFilter => dispatch(changeFilter(newFilter)),
+   changeTheme: theme => dispatch(changeTheme(theme))
+})
+const mapStateToProps = state => ({
+   theme: state.app.theme
 })
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

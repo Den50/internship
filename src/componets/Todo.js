@@ -12,10 +12,10 @@ const Todo = (props) => {
    ]
    return (
       <li className={props.active ? "Todo" : "Todo noactive"}>
-         <input className="checkbox" checked={!props.active ? "checked" : ""} type="checkbox" onClick={e => props.eventToggle(props.id)}/>
+         <input className="checkbox" defaultChecked={false} checked={!props.active} type="checkbox" onChange={e => props.eventToggle(props.id)}/>
          <span className="content" onClick={e => props.eventToggle(props.id)}>{props.cnt}</span>
          <span className="close" onClick={e => props.eventDelete(props.id)}>X</span>
-         <span className="time">{wday[props.time-1]}</span>
+         <span className="time">{wday[(props.time+6)%7]}</span>
       </li>
    )
 }

@@ -1,0 +1,369 @@
+/* 
+*
+* Light version css file
+*
+*/
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+}
+
+/* 
+*
+* Component App
+*
+*/
+#root{
+  height: 100%;
+}
+.App{
+  height: 100%;
+}
+.App.light{
+  transition: all .2s ease-in-out;
+  background-color: #fff;
+}
+
+/* 
+*
+* Component Header
+*
+*/
+
+
+header{
+  width: 100%;
+  padding: 15px 0;
+  margin-bottom: 30px;
+}
+header.light{
+  background-color: #fff;
+  box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
+}
+.wrap_header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.branch{
+  line-height: 27px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+header.light .branch{
+  color: rgb(54, 54, 54);
+}
+
+
+.exportJSON{
+  text-align: center;
+}
+
+.group_tools{
+  display: flex;
+  width: 20%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.browse-button { 
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+.browse-button input[type="button"] { 
+  cursor: pointer;
+  background-color: rgb(149 35 255);
+  color: white;
+  border-radius: 3px;
+  border: none;
+  padding: 5px 8px;
+}
+.browse-button input[type="file"] { 
+  width: 150px; 
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  cursor: pointer;
+  opacity: 0;
+  /* filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0); */
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  margin: 0;
+}
+.name_switch{
+  position: absolute;
+  left: -60px;
+}
+header.light .name_switch{
+  color: #000;
+}
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 1px;
+  bottom: 1px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+/* 
+*
+* Component Panel
+*
+*/
+
+.Panel{
+  background-color: rgb(224, 210, 2);
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
+}
+.Panel input{
+  width: 50%;
+  border: none;
+  border-radius: 3px 0 0 3px;
+  /* outline: 2; */
+  font-size: 18px;
+  height: 40px;
+  position: relative;
+  padding: 0 8px;
+  font-weight: 300;
+}
+.Panel.light .inputTodo{
+  background-color: #fff;
+}
+.Panel button.addButton{
+  /* position: absolute; */
+  /* right: -20px; */
+  background-color: #9523ff;
+  border: none;
+  color: white;
+  border-radius: 0 3px 3px 0;
+  width: 60px;
+}
+
+.chooseFilter{
+  margin-left: 30px;
+}
+.chooseFilter button {
+  background-color: #9523ff;
+  color: white;
+  /* border: 2px solid #871deb; */
+  border: none;
+  padding: 8px 12px;
+}
+.chooseFilter .allButton{
+  border-radius: 3px 0 0 3px;
+  /* border-right: none; */
+}
+.chooseFilter .checkedButton{
+  border-radius: 0 3px 3px 0;
+  /* border-left: none; */
+}
+.chooseFilter button.active{
+  background-color: #670abe;
+  /* border: 2px solid #5905a8; */
+}
+
+/* 
+*
+* Component Todo
+*
+*/
+
+.time{
+  float: right;
+  color: rgb(163, 163, 163);
+  margin-right: 15px;
+}
+.close {
+  float: right;
+  font-size: 18px !important;
+  font-weight: normal !important;
+  line-height: 27px;
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 50%;
+  width: 29px;
+  height: 29px;
+  text-align: center;
+  padding-bottom: 2px;
+  line-height: 26px !important;
+  cursor: pointer;
+}
+.Todos{
+  border-radius: 0 0 5px 5px;
+  padding: 20px 0 50px;
+}
+.Todos.light{
+  box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
+  background-color: #fff;
+}
+.Todos ul{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.Todo{
+  width: 90%;
+  list-style: none;
+  /* background-color: rgb(233, 233, 233); */
+  margin-bottom: 10px;
+  padding: 9px 9px;
+  font-size: 18px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
+  position: relative;
+  border: 2px solid white;
+  transition: all .2s ease-in-out;
+}
+.Todo:hover{
+  border: 2px solid rgb(146, 2, 190);
+}
+.Todo.noactive {
+  opacity: 0.5;
+}
+
+.Todo span{
+  margin-left: 5px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+/* 
+*
+* Component Barchart
+*
+*/
+
+
+.Barchart{
+  width: 40%;
+  vertical-align: middle;
+  border-radius: 3px;
+  /* box-shadow: 0 0 5px 0 rgba(83, 83, 83, 0.246); */
+  padding: 5px 40px 4px 10px;
+  position: relative;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+.Barchart::after{
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 11px;
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  
+  
+  cursor: pointer;
+}
+.Barchart.light::after{
+  border-top: 5px solid rgb(47, 47, 47);
+}
+
+.wdayDropdownItem{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content:space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+.wdayDropdownItem_label{
+  margin-top: -1px;
+}
+.wdayDropdownItem .progress{
+  width: 90%;
+}
+.wdayDropdown{
+  position: absolute;
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  z-index: 10;
+  left: 0px;
+  top: 40px;
+  padding: 15px 20px;
+  box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
+  border-radius: 3px;
+}
+
+/* 
+*
+* Component Footer
+*
+*/
+
+
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+footer.light{
+  box-shadow: 0 0 10px 0 rgba(83, 83, 83, 0.246);
+  background-color: white;
+  color: rgb(36, 36, 36);
+}

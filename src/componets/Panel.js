@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
-import { addTodo, deleteTodo, toggleTodo, changeFilter } from "../redux/actions"
+import { addTodo, changeFilter } from "../redux/actions"
 
 class Panel extends Component {
    constructor(props) {
@@ -9,16 +9,29 @@ class Panel extends Component {
       this.inputRef = React.createRef()
    }
    addTodo(e){
-      this.props.addTodo(this.inputRef.value)
+      const value = this.inputRef.value
+      if(value.length < 3){
+         alert("Enter furher value todo")
+      }
+      else{
+         this.props.addTodo(value)
+      }
    }
    addTodoEnter(e){
-      if(e.code == "Enter")
-         this.props.addTodo(this.inputRef.value)
+      if(e.code == "Enter"){
+         const value = this.inputRef.value
+         if(value.length < 3){
+            alert("Enter furher value todo")
+         }
+         else{
+            this.props.addTodo(value)
+         }
+      }
    }
    render() { 
       return ( 
-         <div className="Panel">
-            <input type="text" placeholder="Type text here..." ref={input => this.inputRef = input} onKeyPress={e => this.addTodoEnter(e)}/>
+         <div className={`Panel ${this.props.theme}`}>
+            <input type="text" className="inputTodo" placeholder="Type text here..." ref={input => this.inputRef = input} onKeyPress={e => this.addTodoEnter(e)}/>
             <button className="addButton" onClick={e => this.addTodo(e)}>Add</button>
             <div className="chooseFilter">
                <button onClick={e => this.props.changeFilter("all")} className={this.props.filter == "all"? "allButton active" : "allButton"}>All</button>
@@ -37,6 +50,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-   filter: state.filter
+   filter: state.filter,
+   theme: state.app.theme
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Panel);

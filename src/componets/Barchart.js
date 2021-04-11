@@ -28,11 +28,11 @@ class Barchart extends Component {
 		todos.map((todo, index) => {
 			if(todo.active){
 				countActiveGLobal++
-				res[todo.time-1].countActive++
+				res[(todo.time + 6) % 7].countActive++
 			}
 			else{
 				countCheckedGLobal++
-				res[todo.time-1].countChecked++
+				res[(todo.time + 6) % 7].countChecked++
 			}
 		})
 		res.map((wday, index) => {
@@ -46,13 +46,14 @@ class Barchart extends Component {
 	}
    render() {
       return ( 
-         <div className="Barchart" onClick={e => this.setState({dropdown: !this.state.dropdown})}>
+         <div className={`Barchart ${this.props.theme}`} onClick={e => this.setState({dropdown: !this.state.dropdown})}>
             <ProgressBar now={this.calc().globalProcents} label={`${this.calc().globalProcents}%`}/>
             <div className="wdayDropdown" style={this.state.dropdown? {display: "block"}: {display: "none"}}>
+					<h4>Statistics</h4>
 					{
-						this.calc().wdays.map(wday => 
-							<div className="wdayDropdownItem">
-								<span>{wday.wday}: </span> 
+						this.calc().wdays.map((wday, index) => 
+							<div className="wdayDropdownItem" key={""+index}>
+								<span className="wdayDropdownItem_label">{wday.wday}: </span> 
 								<ProgressBar now={wday.procents} label={`${wday.procents}%`}/>
 							</div>
 						)
@@ -64,7 +65,8 @@ class Barchart extends Component {
 }
 
 const mapStateToProps = state => ({
-   todos: state.todos
+   todos: state.todos,
+	theme: state.app.theme
 })
 
 export default connect(mapStateToProps, null)(Barchart);
