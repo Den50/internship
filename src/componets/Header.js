@@ -31,7 +31,7 @@ class Header extends Component {
                   <div className='group_tools'>
                      <label className="switch">
                         <span className="name_switch">Theme: </span>
-                        <input type="checkbox" defaultChecked={this.props.theme == "dark"} onChange={e => this.props.changeTheme((e.target.checked)? "dark": "light")}/>
+                        <input type="checkbox" checked={this.props.theme == "dark"} onChange={e => this.props.changeTheme((e.target.checked)? "dark": "light")}/>
                         <span className="slider round"></span>
                      </label>
 
